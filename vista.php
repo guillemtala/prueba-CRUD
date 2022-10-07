@@ -34,29 +34,36 @@
 <body>
 <?php
 
-require_once 'leer.php';
+/* require_once 'leer.php'; */
 
+require_once 'alumno.php';
 
+    /* $alu=new Alumno(null,'Fantasma',56); */
+    $listaAlumnos=Alumno::getAlumnos();
 
+    echo '<a href="./crearvista.php" class="btn btn-success btn-lg" role="button" aria-disabled="true">Crear</a>';
     echo '<table>';
     echo '<tr>';
+    /* echo '<th>ID</th>'; */
     echo '<th>Nombre</th>';
     echo '<th>Edad</th>';
-    echo '<th>Correo</th>';
     echo '<th>Borrar</th>';
     echo '<th>Modificar</th>';
     echo '</tr>';
     foreach ($listaAlumnos as $alumno) {
         echo '<tr>';
-        echo "<td>{$alumno['id']}</td>";
+        /* echo "<td>{$alumno['id']}</td>"; */
         echo "<td>{$alumno['nombre']}</td>";
         echo "<td>{$alumno['edad']}</td>";
+        
+
+        /* echo "<td><a type='button' class='btn btn-primary' href='actualizar.php?id={$alumno['id']}'>Actualizar</a></td>"; */
+        /* echo "<td><a type='button' class='btn btn-danger' href='eliminarController.php?id={$alumno['id']}'>Eliminar</a></td>"; */
         ?>
-                        
+        <td><button type="button" class="btn btn-danger" onClick="aviso('eliminarController.php?id=<?php echo $alumno['id']; ?>')" >Eliminar</button></td>                
+        <td><button class="btn btn-primary" onClick="aviso('actualizarvista.php?id=<?php echo $alumno['id']; ?>')" >Modificar</button></td>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                         
-        <td><button class="btn btn-danger" onClick="aviso('./borrar.php?id=alu&id_alu=<?php echo $alumno['id'];?>' , '<?php echo $alumno['nom_alu'];?>');" ><img class="imagen-edit-borr" src="./img/trash.svg" alt=""></button></td>
-        <td><button class="btn btn-info" onClick="aviso2('./modificar.php?id=alu&clase=<?php echo $alumno['nom_classe'];?>&id_alu=<?php echo $alumno['id_alumne'];?>' , '<?php echo $alumno['nom_alu'];?>');" ><img class="imagen-edit-borr" src="./img/editar.png" alt=""></button></td>
         
                        
         </tr>

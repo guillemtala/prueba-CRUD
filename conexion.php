@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+
 $servidor= "mysql:host=".SERVIDOR.";dbname=".BD;
 /* echo $servidor; */
 
